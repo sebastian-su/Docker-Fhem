@@ -16,8 +16,8 @@ RUN echo 'Acquire::https::debian.fhem.de::Verify-Peer "false";' > /etc/apt/apt.c
 # actual install of fhem
 RUN apt-get update && apt-get install -y fhem
 
-# disables security warning message
-RUN echo attr global motd none >> /opt/fhem/fhem.cfg
+# copy fhem.cfg into container - configure fhem here
+ADD fhem.cfg /opt/fhem/fhem.cfg
 
 EXPOSE 8083
 EXPOSE 8084
